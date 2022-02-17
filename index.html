@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta charset="utf-8">      
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <title>MovieDB</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="logo">Movies</div>
+            <button class="my-favorite">My Favorite</button>
+        </header>
+        <div class="favorite-page">
+            <h1 class="title">My favorite</h1>
+            <div class="favorite-list">
+                
+            </div>
+        </div>
+        <div class="single">
+            <div class="navigation">
+                <div class="back" onclick="backToList()">
+                    <img src="img/arrow-left.svg" alt="arrow-left" class="arrow-left">
+                    <p>Back to list</p>
+                </div>
+                <div class="next" onclick="nextMovie()">
+                    <p>Next Movie</p>
+                    <img src="img/arrow-right.svg" alt="arrow-right" class="arrow-right">
+                </div>
+            </div>
+            <div class="modal-info">
+                <img class="modal-poster">
+                <div class="info">
+                    <div class="favorite">
+                        <button class="add-favorite-button">Add to favorite</button>
+                        <button class="unfavorite-button">Unfavorite</button>
+                    </div>                        
+                    <h1 class="title-movie"></h1>
+                    <div class="detail">
+                        <div class="score"></div>
+                        <div class="rating"></div>
+                        <div class="release-date"></div>
+                    </div>
+                    <div class="overview">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <article class="main">
+            <h1 class="title">Latest Releases</h1>
+            <div class="list">
+            </div>
+            <div class="pagination">
+                <button class="first-page">First</button>
+                <button class="prev-page">Prev page</button>
+                <div class="pages">
+                   
+                </div>
+                <button class="next-page">Next page</button>
+                <button class="last-page">Last</button>
+            </div>
+        </article>
+        <script src="scripts/script.js"></script>
+    </body>
+</html>
