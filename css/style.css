@@ -154,6 +154,7 @@ select {
 
 .modal-poster {
     width: 250px;
+    max-height: 375px;
 }
 
 .favorite-poster {
@@ -351,7 +352,19 @@ select {
     display: none;
 }
 
-@media screen and (max-width: 768px){
+.unfavorite-star {
+    display: none;
+}
+
+.overview-mobile {
+    display: none;
+}
+
+.title-movie-mobile {
+    display: none;
+}
+
+@media screen and (max-width: 600px){
     .add-favorite-button {
         display: none;
     }
@@ -361,10 +374,26 @@ select {
     }
 
     .add-favorite-star {
+        position: absolute;
         display: inline-block;
-        background: url(/img/star.svg);
+        background: url(../img/star.svg) no-repeat;
         width: 40px;
         height: 40px;
+    }
+
+    .unfavorite-star {
+        display: inline-block;
+        background: url(../img/star-filled.svg) no-repeat;
+        width: 40px;
+        height: 40px;
+    }
+
+    .add-favorite-star:hover {
+        cursor: pointer;
+    }
+
+    .unfavorite-star:hover {
+        cursor: pointer;
     }
 
     .header-favorite-info > h1 {
@@ -374,5 +403,79 @@ select {
 
     .unfavorite {
         margin: 0 20px 20px 0;
+    }
+
+    .title-movie {
+        display: none;
+    }
+
+    .title-movie-mobile {
+        display: inline-block;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 0;
+        color: #ffffff;
+        word-wrap: break-word;
+        max-width: 370px;
+        padding: 0 30px 0 30px;
+    }
+
+    .overview {
+        display: none;
+    }
+
+    .modal-poster {
+        width: 130px;
+        height: 200px;
+        padding-left: 30px;
+    }
+
+    .overview-mobile {
+        display: inline-block;
+        padding: 20px 20px 20px 0;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 0;
+        border-top: 2px solid grey;
+        border-bottom: 2px solid grey;
+        color: #ffffff;
+        text-align: justify;
+        padding: 0 30px 0 30px;
+        max-width: 370px;
+    }
+
+    .info {
+        max-width: 250px;
+    }
+
+    .detail {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        color: #ffffff;
+        margin-top: -40px;
+        font-size: 20px;
+    }
+
+    .rating {
+        padding: 0;
+        border: 0;
+        margin: 40px 0 40px 0;
+    }
+
+    .release-date {
+        padding: 0 30px 0 0;
+    }
+
+    .score {
+        padding: 0;
+    }
+
+    .next {
+        width: 145px;
+    }
+
+    .back {
+        width: 145px;
     }
 }

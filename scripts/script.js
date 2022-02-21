@@ -10,6 +10,8 @@ const firstPageButton = document.querySelector('.first-page');
 const lastPageButton = document.querySelector('.last-page');
 const addFavoriteButton = document.querySelector('.add-favorite-button');
 const unfavoriteButton = document.querySelector('.unfavorite-button');
+const addFavoriteMobile = document.querySelector('.add-favorite-star');
+const unfavoriteMobile = document.querySelector('.unfavorite-star');
 const getFavorite = document.querySelector('.my-favorite');
 const favoriteList = document.querySelector('.favorite-list');
 const next = document.querySelector('.next');
@@ -106,17 +108,22 @@ const getInfoMovie = (movie) => {
     let dateString = (releaseDate.toLocaleString('en-US', { month: 'long' })) + ' ' + releaseDate.getDate()  + ', ' + releaseDate.getFullYear();
     document.querySelector('.modal-poster').src = (movie.poster_path === null) ? 'img/photo.jpg' : `http://image.tmdb.org/t/p/w342${movie.poster_path}`;
     document.querySelector('.title-movie').innerHTML = movie.title + '(' + releaseDate.getFullYear() + ')';
+    document.querySelector('.title-movie-mobile').innerHTML = movie.title + '(' + releaseDate.getFullYear() + ')';
     document.querySelector('.score').innerHTML = 'Score: ' + movie.vote_average;
     document.querySelector('.rating').innerHTML = 'Rating: ' + (movie.adult ? 'R' : 'G');
     document.querySelector('.release-date').innerHTML = 'Release Date: ' + dateString;
     document.querySelector('.overview').innerHTML = movie.overview;
+    document.querySelector('.overview-mobile').innerHTML = movie.overview;
     single.style.display = 'flex';
     article.style.display = 'none';
     favoritePage.style.display = 'none';
     if(!checkFavorite(movie.id)){
+        addFavoriteMobile.style.visibility = 'visible';
         addFavoriteButton.style.visibility = 'visible';
         unfavoriteButton.style.visibility = 'hidden';
+        unfavoriteMobile.style.visibility = 'hidden';
     }
+
     if(page == totalPages && movies.length - 1 == id){
         next.style.visibility = 'hidden';
     } else {
@@ -244,10 +251,11 @@ const pagination = (page) => {
 };
 
 addFavoriteButton.addEventListener('click', () => {
-   
     favorite.push(movie);
     addFavoriteButton.style.visibility = 'hidden';
     unfavoriteButton.style.visibility = 'visible';
+    addFavoriteMobile.style.visibility = 'hidden';
+    unfavoriteMobile.style.visibility = 'visible';
 });
 
 logo.addEventListener('click', () => {
@@ -270,4 +278,23 @@ unfavoriteButton.addEventListener('click', () => {
     favorite.splice(removeMovie, 1);
     addFavoriteButton.style.visibility = 'visible';
     unfavoriteButton.style.visibility = 'hidden';
+    addFavoriteMobile.style.visibility = 'visible';
+    unfavoriteMobile.style.visibility = 'hidden';
+});
+
+addFavoriteMobile.addEventListener('click', () => {
+    favorite.push(movie);
+    addFavoriteButton.style.visibility = 'hidden';
+    unfavoriteButton.style.visibility = 'visible';
+    addFavoriteMobile.style.visibility = 'hidden';
+    unfavoriteMobile.style.visibility = 'visible';
+});
+
+unfavoriteMobile.addEventListener('click', () => {
+    removeMovie = favorite.findIndex(item => item.id == movie.id);
+    favorite.splice(removeMovie, 1);
+    addFavoriteButton.style.visibility = 'visible';
+    unfavoriteButton.style.visibility = 'hidden';
+    addFavoriteMobile.style.visibility = 'visible';
+    unfavoriteMobile.style.visibility = 'hidden';
 });
